@@ -1,0 +1,31 @@
+{
+  "name": "pizzeria-app-backend",
+  "version": "1.0.0",
+  "description": "Pizzeria app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./dist/app.js",
+    "dev": "nodemon ./src/app.ts",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rgb-sarma/pizzeria-app-backend.git"
+  },
+  "author": "Petar Ilic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rgb-sarma/pizzeria-app-backend/issues"
+  },
+  "homepage": "https://github.com/rgb-sarma/pizzeria-app-backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.8.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
+  }
+}
