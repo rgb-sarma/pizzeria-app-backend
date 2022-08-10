@@ -1,22 +1,11 @@
 import express, { Router } from 'express';
 import { Request, Response } from 'express';
+import { getAllSizes, createSize, updateSize, deleteSize } from '../../controllers/admin/sizeController';
 
 const router: Router = express.Router();
 
-router.get('/', (req: Request, res: Response): void => {
-  res.json('Get Sizes');
-})
+router.route('/').get(getAllSizes).post(createSize);
 
-router.post('/', (req: Request, res: Response): void => {
-  res.json('Create Size');
-})
-
-router.put('/:id', (req: Request, res: Response): void => {
-  res.json(`Update Size ${req.params.id}`);
-})
-
-router.delete('/:id', (req: Request, res: Response): void => {
-  res.json(`Delete Size ${req.params.id}`);
-})
+router.route('/:id').put(updateSize).delete(deleteSize);
 
 export default router;

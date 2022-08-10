@@ -1,18 +1,14 @@
 import express, { Router } from 'express';
 import { Request, Response } from 'express';
+import { getAllAlergens, updateAlergen, createAlergen, deleteAlergen } from '../../controllers/admin/alergenController';
+import { verifyId } from '../../middleware/handlers';
 
 const router: Router = express.Router();
 
-router.get('/', (req: Request, res: Response): void => {
-  res.json('Get Alergens');
-})
+router.use('/:id' , verifyId);
 
-router.post('/', (req: Request, res: Response): void => {
-  res.json('Create Alergen');
-})
+router.route('/').get(getAllAlergens).post(createAlergen);
 
-router.delete('/:id', (req: Request, res: Response): void => {
-  res.json(`Delete Alergen ${req.params.id}`);
-})
+router.route('/:id').delete(deleteAlergen).put(updateAlergen);
 
 export default router;

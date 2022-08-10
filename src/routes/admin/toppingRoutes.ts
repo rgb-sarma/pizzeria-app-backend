@@ -1,22 +1,11 @@
 import express, { Router } from 'express';
 import { Request, Response } from 'express';
+import { createTopping, deleteTopping, getAllToppings, updateTopping } from '../../controllers/admin/toppingController';
 
 const router: Router = express.Router();
 
-router.get('/', (req: Request, res: Response): void => {
-  res.json('Get Toppings');
-})
+router.route('/').get(getAllToppings).post(createTopping);
 
-router.post('/', (req: Request, res: Response): void => {
-  res.json('Create Topping');
-})
-
-router.put('/:id', (req: Request, res: Response): void => {
-  res.json(`Update Topping ${req.params.id}`);
-})
-
-router.delete('/:id', (req: Request, res: Response): void => {
-  res.json(`Delete Topping ${req.params.id}`);
-})
+router.route('/:id').put(updateTopping).delete(deleteTopping);
 
 export default router;

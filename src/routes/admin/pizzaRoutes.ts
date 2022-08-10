@@ -1,22 +1,13 @@
 import express, { Router } from 'express';
 import { Request, Response } from 'express';
+import { createPizza, deletePizza, getAllPizzas, updatePizza } from '../../controllers/admin/pizzaController';
+import { verifyId } from '../../middleware/handlers';
 
 const router: Router = express.Router();
+// router.use('/:id' , verifyId);
 
-router.get('/', (req: Request, res: Response): void => {
-  res.json('Get Pizzas');
-})
+router.route('/').get(getAllPizzas).post(createPizza);
 
-router.post('/', (req: Request, res: Response): void => {
-  res.json('Create Pizza');
-})
-
-router.put('/:id', (req: Request, res: Response): void => {
-  res.json(`Update Pizza ${req.params.id}`);
-})
-
-router.delete('/:id', (req: Request, res: Response): void => {
-  res.json(`Delete Pizza ${req.params.id}`);
-})
+router.route('/:id').put(updatePizza).delete(deletePizza);
 
 export default router;
